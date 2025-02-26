@@ -23,7 +23,7 @@
       </fieldset>
     </form>
     <p class="mt-8 text-center text-sm">
-      <NuxtLink class="font-semibold text-primary underline-offset-2 hover:underline" to="/signup"
+      <NuxtLink class="font-semibold text-primary underline-offset-2 hover:underline" to="/login"
         >Voltar e entrar</NuxtLink
       >
     </p>
