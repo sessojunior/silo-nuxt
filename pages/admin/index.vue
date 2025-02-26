@@ -9,11 +9,7 @@
           <!-- Sidebar Header -->
           <div class="flex h-16 justify-between border-b border-b-transparent bg-[#FEFEFE]">
             <div class="flex w-full items-center gap-2 px-4">
-              <UiAvatar
-                src="https://picsum.photos/200/300.jpg"
-                alt="Silo"
-                class="size-8 rounded object-contain"
-              />
+              <UiAvatar src="/logo.png" alt="Silo" class="size-8 rounded object-contain" />
               <span class="text-xl font-bold">Silo</span>
             </div>
             <!-- Button to hide sidebar -->
