@@ -11,9 +11,48 @@
           </div>
           <div class="flex flex-col px-8 py-6">
             <h3 class="pb-2 text-lg font-medium">Causas de problemas</h3>
-            <div>
-              Gráfico radial, com os itens e a quantidade: Rede externa, Servidor indisponível,
-              Falha humana, Rede interna, Erro no modelo, Outros problemas
+            <div class="flex">
+              <div class="flex flex-col flex-wrap gap-x-6 gap-y-1 text-xs text-gray-600">
+                <div class="flex items-center">
+                  <div class="mr-1.5 h-2 w-2 rounded-full bg-[#34A383]"></div>
+                  <div>
+                    <span>Rede externa: <span class="font-bold">65</span></span>
+                  </div>
+                </div>
+                <div class="flex items-center">
+                  <div class="mr-1.5 h-2 w-2 rounded-full bg-[#E6463B]"></div>
+                  <div>
+                    <span>Servidor indisponível: <span class="font-bold">17</span></span>
+                  </div>
+                </div>
+                <div class="flex items-center">
+                  <div class="mr-1.5 h-2 w-2 rounded-full bg-[#F5683E]"></div>
+                  <div>
+                    <span>Falha humana: <span class="font-bold">21</span></span>
+                  </div>
+                </div>
+                <div class="flex items-center">
+                  <div class="mr-1.5 h-2 w-2 rounded-full bg-[#4E67C9]"></div>
+                  <div>
+                    <span>Rede interna: <span class="font-bold">48</span></span>
+                  </div>
+                </div>
+                <div class="flex items-center">
+                  <div class="mr-1.5 h-2 w-2 rounded-full bg-[#DFDBD7]"></div>
+                  <div>
+                    <span>Erro no modelo: <span class="font-bold">121</span></span>
+                  </div>
+                </div>
+                <div class="flex items-center">
+                  <div class="mr-1.5 h-2 w-2 rounded-full bg-[#F5AF53]"></div>
+                  <div>
+                    <span>Outros problemas: <span class="font-bold">12</span></span>
+                  </div>
+                </div>
+              </div>
+              <div>
+                Radial
+              </div>
             </div>
           </div>
         </div>
@@ -22,19 +61,45 @@
         <div class="flex flex-col border-b border-b-[#F3F3F3] px-8 py-6">
           <h3 class="pb-2 text-lg font-medium">Status dos produtos</h3>
           <div class="flex flex-col">
-            <div>Barra de progresso</div>
-            <div>
-              Legenda com os itens e quantidade: Em execução, Precisam de atenção, Com problemas
+            <div class="flex gap-4">
+              <div><span class="text-xl font-bold">32</span> produtos</div>
+              <div><span class="text-xl font-bold">6</span> incidentes hoje</div>
             </div>
             <div class="relative">
-              <div class="mb-2 flex h-2 gap-0.5 overflow-hidden rounded bg-gray-100 text-xs">
-                <div class="w-[10%] rounded-full bg-green-500"></div>
-                <div class="w-[27%] rounded-full bg-yellow-500"></div>
-                <div class="w-[38%] rounded-full bg-red-500"></div>
+              <div
+                class="my-2 flex h-2 w-[320px] gap-0.5 overflow-hidden rounded bg-gray-100 text-xs"
+              >
+                <div class="w-[70%] rounded-full bg-[#15CDCD]"></div>
+                <div class="w-[17%] rounded-full bg-[#F4A540]"></div>
+                <div class="w-[4%] rounded-full bg-[#E47174]"></div>
               </div>
-              <div class="flex items-center justify-between text-xs">
-                <div class="text-gray-600">Progress</div>
-                <div class="text-gray-600">100%</div>
+              <div class="flex items-center text-xs text-muted-foreground">
+                <div class="flex flex-wrap gap-x-6 gap-y-1 text-gray-600">
+                  <div class="flex items-center">
+                    <div class="mr-1.5 h-2 w-2 rounded-full bg-[#15CDCD]"></div>
+                    <div>
+                      <span>Em execução: <span class="font-bold">12</span></span>
+                    </div>
+                  </div>
+                  <div class="flex items-center">
+                    <div class="mr-1.5 h-2 w-2 rounded-full bg-[#F4A540]"></div>
+                    <div>
+                      <span>Precisam de atenção: <span class="font-bold">3</span></span>
+                    </div>
+                  </div>
+                  <div class="flex items-center">
+                    <div class="mr-1.5 h-2 w-2 rounded-full bg-[#E47174]"></div>
+                    <div>
+                      <span>Com problemas: <span class="font-bold">1</span></span>
+                    </div>
+                  </div>
+                  <div class="flex items-center">
+                    <div class="mr-1.5 h-2 w-2 rounded-full bg-gray-100"></div>
+                    <div>
+                      <span>Falta rodar: <span class="font-bold">2</span></span>
+                    </div>
+                  </div>
+                </div>
               </div>
             </div>
           </div>
@@ -292,8 +357,6 @@
   import { CircleProgressBar } from "circle-progress.vue"
   import { addDays, endOfMonth, startOfMonth, startOfToday } from "date-fns"
 
-  const progressValue = ref(10)
-
   const attributes = ref([
     {
       highlight: true,
@@ -355,4 +418,5 @@
       dates: [endOfMonth(startOfToday()).toString()],
     },
   ])
+
 </script>

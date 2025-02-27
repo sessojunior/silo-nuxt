@@ -306,7 +306,7 @@
       </div>
 
       <!-- Content Main -->
-      <div class="flex min-h-[calc(100vh-64px)] w-full">
+      <div class="flex h-full w-full">
         <slot />
       </div>
     </div>
