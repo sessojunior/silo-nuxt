@@ -19,6 +19,7 @@
     "@vee-validate/nuxt": "^4.15.0",
     "@vee-validate/yup": "^4.15.0",
     "@vueuse/nuxt": "^12.7.0",
+    "circle-progress.vue": "^3.3.0",
     "nuxt": "^3.15.4",
     "radix-vue": "^1.9.16",
     "tailwind-variants": "^0.3.1",
@@ -30,6 +31,7 @@
   },
   "devDependencies": {
     "@ianvs/prettier-plugin-sort-imports": "^4.4.1",
+    "@samk-dev/nuxt-vcalendar": "^1.0.4",
     "@vueuse/core": "^12.7.0",
     "prettier": "^3.5.2",
     "prettier-plugin-tailwindcss": "^0.6.11",

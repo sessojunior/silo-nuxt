@@ -26,6 +26,17 @@
             <div>
               Legenda com os itens e quantidade: Em execução, Precisam de atenção, Com problemas
             </div>
+            <div class="relative">
+              <div class="mb-2 flex h-2 gap-0.5 overflow-hidden rounded bg-gray-100 text-xs">
+                <div class="w-[10%] rounded-full bg-green-500"></div>
+                <div class="w-[27%] rounded-full bg-yellow-500"></div>
+                <div class="w-[38%] rounded-full bg-red-500"></div>
+              </div>
+              <div class="flex items-center justify-between text-xs">
+                <div class="text-gray-600">Progress</div>
+                <div class="text-gray-600">100%</div>
+              </div>
+            </div>
           </div>
         </div>
 
@@ -62,104 +73,286 @@
       </div>
 
       <!-- Side right -->
-      <div
-        class="hidden w-[420px] flex-shrink-0 flex-col border-l-2 border-l-[#F3F3F3] px-8 py-6 lg:flex"
-      >
-        <!-- Resume text -->
-        <div class="flex flex-col border-b border-b-[#F3F3F3] pb-6">
-          <h2 class="pb-4 text-xl font-medium">Resumo do dia</h2>
-          <p class="text-sm">
-            <span class="float-left mr-2">
-              <span
-                class="inline-flex h-8 w-8 items-center justify-center rounded-lg border border-yellow-200 bg-yellow-50"
-                ><Icon class="size-4 text-yellow-500" name="lucide:lightbulb"
-              /></span>
-            </span>
-            Hoje você tem <span class="rounded border px-1 py-0.5 font-medium">20%</span> mais
-            problemas que o normal, você finalizou <strong>2 tasks</strong> em dois projetos, mas o
-            foco está <span class="rounded border px-1 py-0.5 font-medium">12%</span> menor que
-            ontem.
-          </p>
-        </div>
+      <div class="hidden w-[400px] flex-shrink-0 flex-col border-l-2 border-l-[#F3F3F3] lg:flex">
+        <UiScrollArea class="size-full h-[calc(100vh-64px)]">
+          <div class="px-8 py-6">
+            <!-- Resume text -->
+            <div class="flex flex-col border-b border-b-[#F3F3F3] pb-6">
+              <h2 class="pb-4 text-xl font-medium">Resumo do dia</h2>
+              <p class="text-sm">
+                <span class="float-left mr-2">
+                  <span
+                    class="inline-flex h-8 w-8 items-center justify-center rounded-lg border border-yellow-200 bg-yellow-50"
+                    ><Icon class="size-4 text-yellow-500" name="lucide:lightbulb"
+                  /></span>
+                </span>
+                Hoje você tem <span class="rounded border px-1 py-0.5 font-medium">20%</span> mais
+                problemas que o normal, você resolveu <strong>3 problemas</strong> em dois projetos,
+                mas o foco está
+                <span class="rounded border px-1 py-0.5 font-medium">12%</span> menor.
+              </p>
 
-        <!-- Calendar activities -->
-        <div class="flex flex-col border-b border-b-[#F3F3F3] py-6">
-          <div>Calendário</div>
-        </div>
+              <div class="mt-4">
+                <UiCalendar :attributes="attributes" expanded borderless>
+                  <template #header-title="{ title }">
+                    <div class="flex items-center gap-2">
+                      <p>{{ title }}</p>
+                      <Icon class="h-4 w-4 text-muted-foreground" name="lucide:chevron-down" />
+                    </div>
+                  </template>
+                </UiCalendar>
+              </div>
+            </div>
 
-        <!-- Activity resume -->
-        <div class="grid grid-cols-2 border-b border-b-[#F3F3F3] py-6">
-          <div>
-            <h4 class="pb-2 text-sm font-light text-green-500">Processos rodando</h4>
-            <div>
-              <span class="text-xl font-medium">6h 18min</span>
+            <!-- Activity resume -->
+            <div class="grid grid-cols-2 border-b border-b-[#F3F3F3] py-6">
+              <div>
+                <h4 class="pb-2 text-sm">Processos rodando</h4>
+                <div>
+                  <span class="text-xl font-medium">6h 18min</span>
+                </div>
+              </div>
+              <div>
+                <h4 class="pb-2 text-sm">Produtos concluídos</h4>
+                <div>
+                  <span class="inline-flex items-center">
+                    <CircleProgressBar
+                      :value="79"
+                      :max="100"
+                      size="20"
+                      strokeWidth="16px"
+                      colorUnfilled="#000000"
+                      class="mr-1"
+                    />
+                    <span class="pr-3 text-xl font-medium"> 79% </span>
+                    <span class="pt-0.5 text-sm font-light text-muted-foreground">17 de 23</span>
+                  </span>
+                </div>
+              </div>
             </div>
-          </div>
-          <div>
-            <h4 class="pb-2 text-sm font-light text-red-500">Produtos parados</h4>
-            <div>
-              <span class="pr-2 text-xl font-medium">79%</span>
-              <span class="text-sm">8h 9 min</span>
-            </div>
-          </div>
-        </div>
 
-        <!-- Radial Progress -->
-        <div class="grid w-full grid-cols-4 border-b border-b-[#F3F3F3]">
-          <div
-            class="flex flex-col items-center justify-center border-r border-r-[#F3F3F3] px-2 py-6"
-          >
-            <div>62%</div>
-            <div class="text-sm font-medium">Produtos</div>
-          </div>
-          <div
-            class="flex flex-col items-center justify-center border-r border-r-[#F3F3F3] px-2 py-6"
-          >
-            <div>15%</div>
-            <div class="text-sm font-medium">Processos</div>
-          </div>
-          <div
-            class="flex flex-col items-center justify-center border-r border-r-[#F3F3F3] px-2 py-6"
-          >
-            <div>11%</div>
-            <div class="text-sm font-medium">Projetos</div>
-          </div>
-          <div class="flex flex-col items-center justify-center px-2 py-6">
-            <div>12%</div>
-            <div class="text-sm font-medium">Outros</div>
-          </div>
-        </div>
+            <!-- Radial Progress -->
+            <div class="grid w-full grid-cols-4 border-b border-b-[#F3F3F3]">
+              <div
+                class="flex flex-col items-center justify-center border-r border-r-[#F3F3F3] px-2 py-6"
+              >
+                <div>
+                  <CircleProgressBar
+                    :value="62"
+                    :max="100"
+                    size="60"
+                    strokeWidth="12px"
+                    colorUnfilled="#C39BF4"
+                    class="mb-1"
+                    ><span class="pt-0.5 text-sm font-bold leading-none"
+                      >62%</span
+                    ></CircleProgressBar
+                  >
+                </div>
+                <div class="text-sm font-medium">Produtos</div>
+              </div>
+              <div
+                class="flex flex-col items-center justify-center border-r border-r-[#F3F3F3] px-2 py-6"
+              >
+                <div>
+                  <CircleProgressBar
+                    :value="15"
+                    :max="100"
+                    size="60"
+                    strokeWidth="12px"
+                    colorUnfilled="#6EC9AF"
+                    class="mb-1"
+                    ><span class="pt-0.5 text-sm font-bold leading-none"
+                      >15%</span
+                    ></CircleProgressBar
+                  >
+                </div>
+                <div class="text-sm font-medium">Processos</div>
+              </div>
+              <div
+                class="flex flex-col items-center justify-center border-r border-r-[#F3F3F3] px-2 py-6"
+              >
+                <div>
+                  <CircleProgressBar
+                    :value="81"
+                    :max="100"
+                    size="60"
+                    strokeWidth="12px"
+                    colorUnfilled="#F69493"
+                    class="mb-1"
+                    ><span class="pt-0.5 text-sm font-bold leading-none"
+                      >81%</span
+                    ></CircleProgressBar
+                  >
+                </div>
+                <div class="text-sm font-medium">Projetos</div>
+              </div>
+              <div class="flex flex-col items-center justify-center px-2 py-6">
+                <div>
+                  <CircleProgressBar
+                    :value="12"
+                    :max="100"
+                    size="60"
+                    strokeWidth="12px"
+                    colorUnfilled="#BCBFBE"
+                    class="mb-1"
+                    ><span class="pt-0.5 text-sm font-bold leading-none"
+                      >12%</span
+                    ></CircleProgressBar
+                  >
+                </div>
+                <div class="text-sm font-medium">Outros</div>
+              </div>
+            </div>
 
-        <!-- Ongoing projects -->
-        <div class="flex flex-col py-6">
-          <h3 class="pb-2 text-lg font-medium">Projetos em andamento</h3>
-          <div class="flex flex-col">
-            <!-- Project item -->
-            <div class="flex flex-row">
-              <div>58%</div>
-              <div>Projeto 1</div>
-              <div>Barra de progresso</div>
-              <div>3h 43 min</div>
-            </div>
-            <!-- Project item -->
-            <div class="flex flex-row">
-              <div>32%</div>
-              <div>Projeto 2</div>
-              <div>Barra de progresso</div>
-              <div>47 min</div>
-            </div>
-            <!-- Project item -->
-            <div class="flex flex-row">
-              <div>19%</div>
-              <div>Projeto 3</div>
-              <div>Barra de progresso</div>
-              <div>31 min</div>
+            <!-- Ongoing projects -->
+            <div class="flex flex-col py-6">
+              <h3 class="pb-2 text-lg font-medium">Projetos em andamento</h3>
+              <p class="text-sm">
+                Tem <span class="rounded border px-1 py-0.5 font-medium">3</span> projetos em
+                andamento no momento.
+              </p>
+              <div class="mt-4 flex flex-col gap-3">
+                <!-- Project item -->
+                <div class="flex w-full flex-row text-sm">
+                  <div class="mr-2">
+                    <UiTooltip>
+                      <UiTooltipTrigger as-child>
+                        <UiButton size="icon" variant="outline">
+                          <Icon class="size-4" name="lucide:folder-dot" />
+                        </UiButton>
+                      </UiTooltipTrigger>
+                      <UiTooltipContent side="bottom" align="center"
+                        >Abrir projeto 1</UiTooltipContent
+                      >
+                    </UiTooltip>
+                  </div>
+                  <div class="flex w-full flex-col">
+                    <div class="font-medium">Projeto 1</div>
+                    <div class="flex">
+                      <div class="w-40 text-xs">56% • 14 dias</div>
+                      <UiProgress :model-value="56" class="mt-1 h-2" />
+                    </div>
+                  </div>
+                </div>
+                <!-- Project item -->
+                <div class="flex w-full flex-row text-sm">
+                  <div class="mr-2">
+                    <UiTooltip>
+                      <UiTooltipTrigger as-child>
+                        <UiButton size="icon" variant="outline">
+                          <Icon class="size-4" name="lucide:folder-dot" />
+                        </UiButton>
+                      </UiTooltipTrigger>
+                      <UiTooltipContent side="bottom" align="center"
+                        >Abrir projeto 2</UiTooltipContent
+                      >
+                    </UiTooltip>
+                  </div>
+                  <div class="flex w-full flex-col">
+                    <div class="font-medium">Projeto 2</div>
+                    <div class="flex">
+                      <div class="w-40 text-xs">78% • 69 dias</div>
+                      <UiProgress :model-value="78" class="mt-1 h-2" />
+                    </div>
+                  </div>
+                </div>
+                <!-- Project item -->
+                <div class="flex w-full flex-row text-sm">
+                  <div class="mr-2">
+                    <UiTooltip>
+                      <UiTooltipTrigger as-child>
+                        <UiButton size="icon" variant="outline">
+                          <Icon class="size-4" name="lucide:folder-dot" />
+                        </UiButton>
+                      </UiTooltipTrigger>
+                      <UiTooltipContent side="bottom" align="center"
+                        >Abrir projeto 3</UiTooltipContent
+                      >
+                    </UiTooltip>
+                  </div>
+                  <div class="flex w-full flex-col">
+                    <div class="font-medium">Projeto 3</div>
+                    <div class="flex">
+                      <div class="w-40 text-xs">19% • 9 dias</div>
+                      <UiProgress :model-value="19" class="mt-1 h-2" />
+                    </div>
+                  </div>
+                </div>
+              </div>
             </div>
           </div>
-        </div>
+        </UiScrollArea>
       </div>
     </div>
   </NuxtLayout>
 </template>
 
-<script setup lang="ts"></script>
+<script setup lang="ts">
+  import { CircleProgressBar } from "circle-progress.vue"
+  import { addDays, endOfMonth, startOfMonth, startOfToday } from "date-fns"
+
+  const progressValue = ref(10)
+
+  const attributes = ref([
+    {
+      highlight: true,
+      popover: {
+        label: "Out of town bussiness trip",
+      },
+      dates: [
+        {
+          start: startOfMonth(startOfToday()).toString(),
+          end: addDays(startOfMonth(startOfToday()), 3).toString(),
+        },
+      ],
+    },
+    {
+      popover: {
+        label: "Take the dog to the vet",
+      },
+      dot: "red",
+      dates: [addDays(startOfMonth(startOfToday()), 5).toString()],
+    },
+    {
+      bar: "green",
+      popover: {
+        label: "Dinner with friends",
+      },
+      dates: [addDays(startOfMonth(startOfToday()), 8).toString()],
+    },
+    {
+      dot: "purple",
+      popover: {
+        label: "Take the car to the mechanic",
+      },
+      dates: [addDays(startOfMonth(startOfToday()), 14).toString()],
+    },
+    {
+      highlight: true,
+      popover: {
+        label: "Family vacation in Ibiza",
+      },
+      dates: [
+        {
+          start: addDays(startOfMonth(startOfToday()), 16).toString(),
+          end: addDays(startOfMonth(startOfToday()), 24).toString(),
+        },
+      ],
+    },
+    {
+      dot: true,
+      popover: {
+        label: "Take Noah to the football game",
+      },
+      dates: [addDays(startOfMonth(startOfToday()), 22).toString()],
+    },
+    {
+      highlight: true,
+      popover: {
+        label: "Visit the in-laws",
+      },
+      dates: [endOfMonth(startOfToday()).toString()],
+    },
+  ])
+</script>

@@ -224,61 +224,6 @@
             <div class="flex items-center gap-4">
               <!-- Navigation Menu -->
               <div class="hidden items-center justify-center md:flex">
-                <UiNavigationMenu class="hidden lg:flex">
-                  <UiNavigationMenuList>
-                    <UiNavigationMenuItem>
-                      <UiNavigationMenuTrigger title="Beach day" class="bg-transparent" />
-                      <UiNavigationMenuContent>
-                        <div class="grid w-[600px] grid-cols-2 gap-5 p-4">
-                          <!-- eslint-disable-next-line vue/html-self-closing -->
-                          <img
-                            src="https://images.unsplash.com/photo-1510414842594-a61c69b5ae57?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2940&q=80"
-                            alt="Beach"
-                            class="h-full w-full rounded-md object-cover"
-                          />
-                          <ul class="flex flex-col gap-2">
-                            <li
-                              v-for="(item, i) in beachAmenities"
-                              :key="i"
-                              class="rounded-md p-3 text-sm hover:bg-muted"
-                            >
-                              <p class="mb-1 font-semibold leading-none text-foreground">
-                                {{ item.title }}
-                              </p>
-                              <p class="line-clamp-2 text-muted-foreground">
-                                {{ item.description }}
-                              </p>
-                            </li>
-                          </ul>
-                        </div>
-                      </UiNavigationMenuContent>
-                    </UiNavigationMenuItem>
-                    <UiNavigationMenuItem>
-                      <UiNavigationMenuTrigger title="Components" class="bg-transparent" />
-                      <UiNavigationMenuContent>
-                        <ul
-                          class="grid w-[400px] gap-2 p-4 md:w-[500px] md:grid-cols-2 lg:w-[600px]"
-                        >
-                          <li
-                            v-for="item in components"
-                            :key="item.title"
-                            class="rounded-md p-3 text-sm hover:bg-muted"
-                          >
-                            <NuxtLink :to="item.href">
-                              <p class="mb-1 font-semibold leading-none text-foreground">
-                                {{ item.title }}
-                              </p>
-                              <p class="line-clamp-2 text-muted-foreground">
-                                {{ item.description }}
-                              </p>
-                            </NuxtLink>
-                          </li>
-                        </ul>
-                      </UiNavigationMenuContent>
-                    </UiNavigationMenuItem>
-                  </UiNavigationMenuList>
-                </UiNavigationMenu>
-                <UiDivider orientation="vertical" class="mx-2 hidden h-6 w-2 lg:flex" />
                 <div class="flex gap-1">
                   <UiButton size="icon-sm" variant="ghost">
                     <Icon class="size-4" name="lucide:circle-help" />
@@ -305,10 +250,11 @@
                     </UiAvatar>
                   </UiChip>
                   <div class="flex items-center">
-                    <div class="w-28">
+                    <!-- <div class="w-28">
                       <p class="truncate text-sm font-medium leading-none" v-html="user.username" />
                       <p class="truncate text-xs text-muted-foreground" v-html="user.team" />
-                    </div>
+                    </div> -->
+
                     <!-- Dropdown Menu -->
                     <UiDropdownMenu>
                       <UiDropdownMenuTrigger as-child>
@@ -397,8 +343,8 @@
   const topNav = [
     { title: "Visão geral", icon: "lucide:home", link: "#" },
     {
-      title: "Produtos",
-      icon: "lucide:list-checks",
+      title: "Produtos & tasks",
+      icon: "lucide:folder-check",
       items: [
         { title: "BAM", link: "#" },
         { title: "SMEC", link: "#" },
@@ -407,11 +353,12 @@
       ],
     },
     { title: "Projetos", icon: "lucide:folder-kanban", link: "#" },
-    { title: "Equipes", icon: "lucide:users", link: "#" },
+    { title: "Grupos", icon: "lucide:users", link: "#" },
   ]
 
   const bottomNav = [
     { title: "Agenda", icon: "lucide:calendar-clock", link: "#" },
+    { title: "Bate-papo", icon: "lucide:messages-square", link: "#" },
     {
       title: "Configurações",
       icon: "lucide:settings-2",
@@ -421,62 +368,7 @@
         { title: "Segurança", link: "#" },
       ],
     },
-    { title: "Bate-papo", icon: "lucide:messages-square", link: "#" },
     { title: "Ajuda", icon: "lucide:life-buoy", link: "#" },
-  ]
-
-  const beachAmenities = [
-    {
-      title: "Sun",
-      description: "The Sun is the star at the center of the Solar System.",
-    },
-    {
-      title: "Sand",
-      description:
-        "Sand is a granular material composed of finely divided rock and mineral particles.",
-    },
-    {
-      title: "Water",
-      description:
-        "Water is an inorganic, transparent, tasteless, odorless, and nearly colorless chemical substance.",
-    },
-  ]
-
-  const components: { title: string; href: string; description: string }[] = [
-    {
-      title: "Alert Dialog",
-      href: "/components/alertdialog",
-      description:
-        "A modal dialog that interrupts the user with important content and expects a response.",
-    },
-    {
-      title: "Hover Card",
-      href: "/components/hovercard",
-      description: "For sighted users to preview content available behind a link.",
-    },
-    {
-      title: "Progress",
-      href: "/components/progress",
-      description:
-        "Displays an indicator showing the completion progress of a task, typically displayed as a progress bar.",
-    },
-    {
-      title: "Scroll-area",
-      href: "/components/scrollarea",
-      description: "Visually or semantically separates content.",
-    },
-    {
-      title: "Tabs",
-      href: "/components/tabs",
-      description:
-        "A set of layered sections of content—known as tab panels—that are displayed one at a time.",
-    },
-    {
-      title: "Tooltip",
-      href: "/components/tooltip",
-      description:
-        "A popup that displays information related to an element when the element receives keyboard focus or the mouse hovers over it.",
-    },
   ]
 
   const dropdownMenuitems = [
