@@ -2,46 +2,33 @@
 export default defineNuxtConfig({
   compatibilityDate: "2024-11-01",
   devtools: { enabled: true },
-
   modules: [
     "@nuxtjs/tailwindcss",
-    "@nuxtjs/color-mode",
-    "@vueuse/nuxt",
+    "@nuxtjs/google-fonts",
     "@nuxt/icon",
-    "@nuxt/fonts",
-    "@vee-validate/nuxt",
-    "@morev/vue-transitions/nuxt",
-    "@samk-dev/nuxt-vcalendar"
+    "@nuxt/image",
   ],
-
+  plugins: ["~/plugins/preline.client.ts", "~/plugins/apexcharts.client.ts"],
   tailwindcss: {
-    exposeConfig: false,
-    editorSupport: true,
     cssPath: ["~/assets/css/tailwind.css", { injectPosition: "last" }],
     config: {},
-    viewer: false,
+    viewer: true,
+    exposeConfig: false,
   },
-
-  colorMode: {
-    classSuffix: "",
+  googleFonts: {
+    display: "auto",
+    subsets: "latin",
+    preload: true,
+    outputDir: "assets",
+    fontsDir: "assets/fonts",
+    download: true,
+    overwriting: false,
+    families: {
+      Inter: [200, 300, 400, 500, 600, 700, 800],
+    },
   },
-
-  imports: {
-    imports: [{
-      from: "tailwind-variants",
-      name: "tv",
-    }, {
-      from: "tailwind-variants",
-      name: "VariantProps",
-      type: true,
-    }, {
-      from: "vue-sonner",
-      name: "toast",
-      as: "useSonner"
-    }],
+  image: {
+    dir: "assets/images",
+    format: ["webp"],
   },
-
-  build: {
-    transpile: ["vue-sonner"]
-  }
-})
+});

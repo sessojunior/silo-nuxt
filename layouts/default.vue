@@ -1,7 +1,7 @@
 <template>
-  <div>
-    <slot />
-  </div>
+	<div data-theme="dark">
+		<slot />
+	</div>
 </template>
 
 <script setup lang="ts"></script>
